@@ -1,100 +1,130 @@
 import java.text.SimpleDateFormat
 
 plugins {
-	id 'fml-loom' version '0.1.local'
-	id 'maven-publish'
+    id 'fml-loom' version '0.1'
+    id 'maven-publish'
 }
 
 version = project.mod_version
 group = project.maven_group
 
 static def buildTime() {
-	def df = new SimpleDateFormat("yyyyMMddHHmm")
-	df.setTimeZone(TimeZone.getTimeZone("GMT+8"))
-	return df.format(new Date())
+    def df = new SimpleDateFormat("yyyyMMddHHmm")
+    df.setTimeZone(TimeZone.getTimeZone("GMT+8"))
+    return df.format(new Date())
 }
 
 base {
 //	archivesName = project.archives_base_name + "-dev-build." + buildTime()
-	archivesName = "[极难拓展]" + project.archives_base_name
+    archivesName = "[极难拓展]" + project.archives_base_name
 }
 
 repositories {
-	mavenLocal()
-	maven {
-		name = "Spongepowered"
-		url = "https://repo.spongepowered.org/repository/maven-public/"
-	}
+    maven {
+        name = "ModdedMITE"
+        url = uri("https://maven.limingzxc.top/repository/maven-public/")
+    }
 }
 
-loom {
-	accessWidenerPath = file("src/main/resources/bex.accesswidener")
-	mergedMinecraftJar()
-	setFML(new File("${lib_dir}/${fish_mod_loader}"))
-	mods {
-		"BeyondExtreme" {
-			sourceSet sourceSets.main
-		}
-	}
-}
-
-runClient{
-	args("--username", "${username}", "--session", "a.a.a.a", "--width", 854, "--height", 480)
+configurations {
+    fml
 }
 
 dependencies {
-	minecraft "com.mojang:minecraft:${project.minecraft_version}"
-	mappings loom.fmlMCPMappings()
-	modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
-	implementation("com.google.code.gson:gson:2.11.0")
-	implementation("it.unimi.dsi:fastutil:8.5.12")
+    minecraft "com.mojang:minecraft:${project.minecraft_version}"
+    modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
 
-	implementation files("${lib_dir}/RustedIronCore-1.3.9.jar")
-	implementation files("${lib_dir}/RustedIronCore-1.3.9-source.jar")
-	implementation files("${lib_dir}/MITE-ITE-2.0.17.jar")
-	implementation files("${lib_dir}/Baubles.jar")
-	implementation files("${lib_dir}/Shop-1.0.0.jar")
-	implementation files("${lib_dir}/ManyLib-2.2.3.jar")
-	implementation files("${lib_dir}/ModMenu-10.1.0.jar")
-	implementation files("${lib_dir}/emi-1.1.23+1.6.4-MITE+fish.jar")
-	implementation files("${lib_dir}/Extreme-0.1.6.7-test.jar")
-	implementation files("${lib_dir}/conditional-mixin-0.6.4.jar")
-	implementation files(loom.getFML().toPath())
+    fml "com.github.MinecraftIsTooEasy:FishModLoader:3.4.2"
+    implementation "com.github.MinecraftIsTooEasy:FishModLoader:3.4.2"
 
+    implementation "com.github.MinecraftIsTooEasy:ManyLib:2.3.0"
+    implementation "com.github.MinecraftIsTooEasy:ModMenu:10.1.1"
+    implementation "com.github.MinecraftIsTooEasy:RustedIronCore:1.5.0"
+    implementation "com.github.MinecraftIsTooEasy:RustedIronCore:1.5.0:sources"
+    implementation "com.github.MinecraftIsTooEasy:Conditional-Mixin:0.6.4"
+
+    implementation "com.github.MinecraftIsTooEasy:MITE-ITE:2.0.19"
+    implementation "com.github.MinecraftIsTooEasy:Baubles:1.1.1"
+    implementation "com.github.MinecraftIsTooEasy:Shop:1.0.4"
+    implementation "com.github.MinecraftIsTooEasy:Extreme:0.1.6.11"
+
+    // useful mods
+    implementation "com.github.MinecraftIsTooEasy:ModernMITE:3.7.1"
+    implementation "com.github.MinecraftIsTooEasy:OMMC:1.4.2"
+    implementation "com.github.MinecraftIsTooEasy:Neodymium:1.1.1"
+    implementation "com.github.MinecraftIsTooEasy:Waila:2.0.4"
+    implementation "com.github.MinecraftIsTooEasy:PinIn-Lib:1.6.0"
+    implementation "com.github.MinecraftIsTooEasy:ExtraGui:1.3.6"
+
+    implementation "com.github.MinecraftIsTooEasy:Gson:2.10.1"
+    implementation "com.github.MinecraftIsTooEasy:FastUtil:8.5.12"
+    implementation "com.github.MinecraftIsTooEasy:EMI:1.1.24"
 }
 
-processResources {
-	inputs.property "version", project.version
+def fmlResolvedFile = configurations.fml.files.iterator().next()
 
-	filesMatching("fml.mod.json") {
-		expand "version": project.version
-	}
+loom {
+    accessWidenerPath = file("src/main/resources/bex.accessWidener")
+    mergedMinecraftJar()
+
+    mods {
+        "BeyondExtreme" {
+            sourceSet sourceSets.main
+        }
+    }
+}
+
+loom.setFML(fmlResolvedFile)
+dependencies.add("mappings", loom.fmlMCPMappings())
+
+processResources {
+    inputs.property "version", project.version
+
+    filesMatching("fml.mod.json") {
+        expand "version": project.version
+    }
 }
 
 tasks.withType(JavaCompile).configureEach {
-	it.options.release = 17
+    it.options.release = 17
 }
 
 java {
-	withSourcesJar()
+    withSourcesJar()
 
-	sourceCompatibility = JavaVersion.VERSION_17
-	targetCompatibility = JavaVersion.VERSION_17
+    sourceCompatibility = JavaVersion.VERSION_17
+    targetCompatibility = JavaVersion.VERSION_17
 }
 
 jar {
-	from("LICENSE") {
-		rename { "${it}_${project.base.archivesName.get()}"}
-	}
+    from("LICENSE") {
+        rename { "${it}_${project.base.archivesName.get()}"}
+    }
 }
 
-publishing {
-	publications {
-		mavenJava(MavenPublication) {
-			from components.java
-		}
-	}
+tasks.named('runClient', JavaExec).configure { exec ->
+    def user = project.hasProperty('username') ? project.username : 'Dev'
+    exec.setArgs(['--username', user, '--session', '0', '--width', '854', '--height', '480'])
+}
 
-	repositories {
-	}
+// configure the maven publication
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            from components.java
+        }
+    }
+
+    // See https://docs.gradle.org/current/userguide/publishing_maven.html for information on how to set up publishing.
+    repositories {
+        maven {
+            name = "ModdedMITE"
+            url = uri("https://maven.limingzxc.top/repository/maven-releases/")
+            credentials {
+                // Read only from gradle.properties (user level, your gradle_home)
+                username = project.findProperty("nexusUsername")
+                password = project.findProperty("nexusPassword")
+            }
+        }
+    }
 }
