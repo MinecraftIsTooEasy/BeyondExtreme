@@ -40,13 +40,12 @@ dependencies {
     implementation "com.github.MinecraftIsTooEasy:ManyLib:2.3.0"
     implementation "com.github.MinecraftIsTooEasy:ModMenu:10.1.1"
     implementation "com.github.MinecraftIsTooEasy:RustedIronCore:1.5.0"
-    implementation "com.github.MinecraftIsTooEasy:RustedIronCore:1.5.0:sources"
     implementation "com.github.MinecraftIsTooEasy:Conditional-Mixin:0.6.4"
 
     implementation "com.github.MinecraftIsTooEasy:MITE-ITE:2.0.19"
     implementation "com.github.MinecraftIsTooEasy:Baubles:1.1.1"
-    implementation "com.github.MinecraftIsTooEasy:Shop:1.0.4"
-    implementation "com.github.MinecraftIsTooEasy:Extreme:0.1.6.11"
+    implementation "com.github.MinecraftIsTooEasy:NewShop:1.0.1"
+    implementation "com.github.MinecraftIsTooEasy:Extreme:0.1.6.12"
 
     // useful mods
     implementation "com.github.MinecraftIsTooEasy:ModernMITE:3.7.1"
@@ -111,6 +110,9 @@ tasks.named('runClient', JavaExec).configure { exec ->
 publishing {
     publications {
         mavenJava(MavenPublication) {
+            groupId = project.maven_group
+            artifactId = project.archives_base_name
+            version = project.mod_version
             from components.java
         }
     }
