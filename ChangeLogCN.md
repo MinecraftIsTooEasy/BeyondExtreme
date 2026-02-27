@@ -3,6 +3,12 @@
 
 ---
 
+## v3.0.8
+### Other
+* 更新使用新商店
+
+---
+
 ## v3.0.7
 ### Other
 * Update en_US.lang(vb1dra#6847)
