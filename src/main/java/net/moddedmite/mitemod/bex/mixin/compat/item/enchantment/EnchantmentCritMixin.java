@@ -11,7 +11,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 @Mixin(EnchantmentCrit.class)
 public class EnchantmentCritMixin {
     @Inject(method = "canEnchantItem", at = @At("TAIL"), cancellable = true)
-    public void warHammerEnchantAdd(Item item, CallbackInfoReturnable<Boolean> cir) {
+    public void battleAxeEnchantAdd(Item item, CallbackInfoReturnable<Boolean> cir) {
         if (item instanceof ItemBattleAxe) {
             cir.setReturnValue(true);
         }

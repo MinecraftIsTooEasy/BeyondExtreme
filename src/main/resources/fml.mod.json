@@ -7,7 +7,6 @@
     "fishmodloader": ">=3.4.1",
     "mite_ite": ">=2.0.16",
     "rusted_iron_core": ">=1.5.0",
-    "newshop": ">=1.0.0",
     "extreme": ">=0.1.6.6"
   },
   "environment": "*",
@@ -15,7 +14,7 @@
   "icon": "assets/bex/bex_icon.png",
   "description": "Extreme Addon Mod",
   "authors": [
-    "Xy_Lose",
+    "Xy_Luce",
     "Huix"
   ],
   "contributors": [
@@ -35,8 +34,11 @@
     "mite_ite": [
       "net.moddedmite.mitemod.bex.compat.BEXITEPlugin"
     ],
-    "newshop": [
+    "shop": [
       "net.moddedmite.mitemod.bex.compat.BEXShopPlugin"
+    ],
+    "newshop": [
+      "net.moddedmite.mitemod.bex.compat.BEXNewShopPlugin"
     ]
   },
   "mixins": [

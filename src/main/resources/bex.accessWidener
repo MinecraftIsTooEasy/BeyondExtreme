@@ -8,3 +8,10 @@ accessible method net/minecraft/EntityVillager adjustProbability (F)F
 accessible field net/minecraft/Material name Ljava/lang/String;
 accessible field net/minecraft/BlockAnvil anvilIconNames [Ljava/lang/String;
 accessible field net/minecraft/BlockAnvil iconArray [Lnet/minecraft/Icon;
+accessible field net/minecraft/BiomeDecorator sandPerChunk I
+accessible field net/minecraft/BiomeDecorator sandPerChunk2 I
+accessible field net/minecraft/BiomeDecorator deadBushPerChunk I
+accessible field net/minecraft/BiomeDecorator treesPerChunk I
+accessible field net/minecraft/BiomeDecorator flowersPerChunk I
+accessible field net/minecraft/BiomeDecorator clayPerChunk I
+accessible field net/minecraft/BiomeDecorator bigMushroomsPerChunk I

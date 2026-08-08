@@ -83,6 +83,7 @@ tile.china_fu.name=Blessing Block
 tile.dragon_spawn.name=Dragon Spawn Block
 
 material.vibranium.name=Vibranium
+material.infinity.name=Infinity
 material.enchant.name=Experience
 
 itemGroup.bex=Beyond-Extreme

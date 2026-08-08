@@ -76,12 +76,12 @@ public class BEXFishEvents {
         event.register(EntitySpiderQueen.class, new RenderSpiderQueen(1.45F));
     }
 
-    @Subscribe
-    public void onPlayerLoggedIn(PlayerLoggedInEvent event) {
-        EntityPlayer par1EntityPlayerMP = event.getPlayer();
-        par1EntityPlayerMP.sendChatToPlayer(ChatMessageComponent.createFromTranslationKey("[BeyondExtreme]:")
-                .appendComponent(ChatMessageComponent.createFromTranslationKey("更新日志:https://docs.qq.com/doc/DZVhpUGtGcFRPa2ZV，赞助链接:https://afdian.com/a/xy_lose").setColor(EnumChatFormatting.WHITE)).appendComponent(ChatMessageComponent.createFromTranslationKey("感谢 ").setColor(EnumChatFormatting.RED)
-                        .appendComponent(ChatMessageComponent.createFromTranslationKey("，叶辉与mite-loneina").setColor(EnumChatFormatting.WHITE))
-                        .addText(" 对此项目的赞助").setColor(EnumChatFormatting.RED)));
-    }
+//    @Subscribe
+//    public void onPlayerLoggedIn(PlayerLoggedInEvent event) {
+//        EntityPlayer par1EntityPlayerMP = event.getPlayer();
+//        par1EntityPlayerMP.sendChatToPlayer(ChatMessageComponent.createFromTranslationKey("[BeyondExtreme]:")
+//                .appendComponent(ChatMessageComponent.createFromTranslationKey("更新日志:https://docs.qq.com/doc/DZVhpUGtGcFRPa2ZV，赞助链接:https://afdian.com/a/xy_lose").setColor(EnumChatFormatting.WHITE)).appendComponent(ChatMessageComponent.createFromTranslationKey("感谢 ").setColor(EnumChatFormatting.RED)
+//                        .appendComponent(ChatMessageComponent.createFromTranslationKey("，叶辉与mite-loneina").setColor(EnumChatFormatting.WHITE))
+//                        .addText(" 对此项目的赞助").setColor(EnumChatFormatting.RED)));
+//    }
 }

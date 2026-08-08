@@ -29,6 +29,7 @@
     "common.item.enchantment.EnchantmentArrowDamageMixin",
     "common.item.enchantment.EnchantmentDamageMixin",
     "common.item.enchantment.EnchantmentDiggingMixin",
+    "common.item.enchantment.EnchantmentFishingFortuneMixin",
     "common.item.enchantment.EnchantmentHelperMixin",
     "common.item.enchantment.EnchantmentSpeedMixin",
     "common.item.enchantment.EnchantmentVampiricMixin",

@@ -83,9 +83,10 @@ tile.china_fu.name=福块
 tile.dragon_spawn.name=龙之核心
 
 material.vibranium.name=振金
+material.infinity.name=无尽
 material.enchant.name=附魔金属
 
-itemGroup.bex=超越极限
+itemGroup.bex=超越极限/极难拓展
 
 modifier.armor.invincible.name=精力充沛
 modifier.armor.agility.name=灵敏

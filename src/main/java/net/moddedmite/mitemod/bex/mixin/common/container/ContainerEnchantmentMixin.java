@@ -1,21 +1,57 @@
 package net.moddedmite.mitemod.bex.mixin.common.container;
 
-import com.llamalad7.mixinextras.sugar.Local;
-import net.minecraft.ContainerEnchantment;
-import net.minecraft.Item;
+import net.minecraft.*;
 import net.moddedmite.mitemod.bex.register.BEXMaterials;
-import net.xiaoyu233.mitemod.miteite.item.material.Materials;
 import org.spongepowered.asm.mixin.Mixin;
-import org.spongepowered.asm.mixin.injection.Constant;
-import org.spongepowered.asm.mixin.injection.ModifyConstant;
+import org.spongepowered.asm.mixin.Shadow;
+import org.spongepowered.asm.mixin.Unique;
+import org.spongepowered.asm.mixin.injection.*;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
+
+import java.util.Random;
 
 @Mixin(value = ContainerEnchantment.class, priority = 2000)
-public class ContainerEnchantmentMixin {
-    @ModifyConstant(method = "calcEnchantmentLevelsForSlot", constant = @Constant(intValue = 24, ordinal = 0))
-    private int enchantMaterialMaxLevel(int constant, @Local Item item) {
-        if (item.getHardestMetalMaterial() == BEXMaterials.enchant || item.getHardestMetalMaterial() == Materials.vibranium) {
-            return Integer.MAX_VALUE;
+public abstract class ContainerEnchantmentMixin extends Container {
+    @Shadow private int posX;
+    @Shadow private int posY;
+    @Shadow private int posZ;
+
+    public ContainerEnchantmentMixin(EntityPlayer player) {
+        super(player);
+    }
+
+    @Inject(method = "calcEnchantmentLevelsForSlot", at = @At("HEAD"), cancellable = true)
+    private void onCalcEnchantmentLevelsForSlot(Random random, int slot_index, int num_accessible_bookshelves, ItemStack item_stack, CallbackInfoReturnable<Integer> cir) {
+        Item item = item_stack.getItem();
+
+        if (item.getHardestMetalMaterial() == BEXMaterials.enchant) {
+            int result = this.modifiedCalcEnchantmentLevels(random, slot_index, num_accessible_bookshelves, item_stack);
+            cir.setReturnValue(result);
         }
-        return constant;
+    }
+
+    @Unique
+    private int modifiedCalcEnchantmentLevels(Random random, int slot_index, int num_accessible_bookshelves, ItemStack item_stack) {
+        Item item = item_stack.getItem();
+
+        if (!ItemPotion.isBottleOfWater(item_stack) && !ItemAppleGold.isUnenchantedGoldenApple(item_stack)) {
+            if (item.getItemEnchantability() <= 0) {
+                return 0;
+            } else {
+                Block enchantment_table_block = this.world.getBlock(this.posX, this.posY, this.posZ);
+
+                int enchantment_table_power = (1 + num_accessible_bookshelves) * (enchantment_table_block == Block.enchantmentTableEmerald ? 2 : 4);
+                int enchantment_levels = EnchantmentHelper.getEnchantmentLevelsAlteredByItemEnchantability(enchantment_table_power, item);
+                float fraction = (1.0F + (float) slot_index) / 3.0F;
+
+                if (slot_index < 2) {
+                    fraction += (random.nextFloat() - 0.5F) * 0.2F;
+                }
+
+                return Math.max(Math.round((float) enchantment_levels * fraction), 1);
+            }
+        } else {
+            return 2;
+        }
     }
 }

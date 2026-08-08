@@ -7,8 +7,8 @@ import net.moddedmite.mitemod.bex.item.material.MaterialInfinity;
 
 public class BEXMaterials extends Material {
 
-    public static final Material infinity = new MaterialInfinity(BEXEnumEquipmentMaterials.infinity);;
-    public static final Material enchant = new MaterialEnchant(BEXEnumEquipmentMaterials.enchant);;
+    public static final Material infinity = new MaterialInfinity(BEXEnumEquipmentMaterials.infinity);
+    public static final Material enchant = new MaterialEnchant(BEXEnumEquipmentMaterials.enchant);
 
     public BEXMaterials(String name) {
         super(name);

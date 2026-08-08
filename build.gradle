@@ -44,7 +44,8 @@ dependencies {
 
     implementation "com.github.MinecraftIsTooEasy:MITE-ITE:2.0.20"
     implementation "com.github.MinecraftIsTooEasy:Baubles:1.1.2"
-    implementation "com.github.MinecraftIsTooEasy:NewShop:1.0.4"
+    compileOnly "com.github.MinecraftIsTooEasy:NewShop:1.0.4"
+    implementation "com.github.MinecraftIsTooEasy:Shop:1.0.5"
     implementation "com.github.MinecraftIsTooEasy:Extreme:0.1.6.12"
 
     // useful mods
@@ -58,6 +59,8 @@ dependencies {
     implementation "com.github.MinecraftIsTooEasy:Gson:2.10.1"
     implementation "com.github.MinecraftIsTooEasy:FastUtil:8.5.12"
     implementation "com.github.MinecraftIsTooEasy:EMI:1.1.26"
+    localRuntime "com.github.MinecraftIsTooEasy:OhMyCommands:3.0.0-mc1.6.4-MITE-20260629"
+
 }
 
 def fmlResolvedFile = configurations.fml.files.iterator().next()

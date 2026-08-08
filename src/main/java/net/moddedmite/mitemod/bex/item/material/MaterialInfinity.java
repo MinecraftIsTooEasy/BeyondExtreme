@@ -1,10 +1,12 @@
 package net.moddedmite.mitemod.bex.item.material;
 
+import cn.wensc.mitemod.extreme.util.EXConfigs;
 import huix.glacier.api.extension.material.*;
 import net.minecraft.EnumEquipmentMaterial;
 import net.minecraft.Item;
-import net.minecraft.ItemCoin;
 import net.minecraft.Material;
+import net.moddedmite.mitemod.bex.register.BEXItems;
+import net.moddedmite.mitemod.bex.util.BEXConfigs;
 import net.xiaoyu233.mitemod.miteite.item.MITEITEItemRegistryInit;
 
 public class MaterialInfinity extends Material implements IArmorMaterial, IRepairableMaterial, IToolMaterial {
@@ -26,7 +28,7 @@ public class MaterialInfinity extends Material implements IArmorMaterial, IRepai
 
     @Override
     public Item getRepairItem() {
-        return MITEITEItemRegistryInit.VIBRANIUM_NUGGET;
+        return BEXItems.infinityNugget;
     }
 
     @Override
