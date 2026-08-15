@@ -90,7 +90,6 @@ public class EntitySpiderQueen extends EntityArachnid {
                     if (spawnCounter < 20) {
                         ++this.spawnCounter;
                     } else {
-                        if (Minecraft.getClientPlayer() != null) {
                         EntityBlackWidowSpider widowspider = new EntityBlackWidowSpider(worldObj);
                         widowspider.setPosition(posX + this.rand.nextInt(8) - this.rand.nextInt(8), posY, posZ - this.rand.nextInt(8) + this.rand.nextInt(8));
                         widowspider.refreshDespawnCounter(-9600);
@@ -100,7 +99,6 @@ public class EntitySpiderQueen extends EntityArachnid {
                         widowspider.setAttackTarget(this.getTarget());
                         spawnCounter = 0;
                         spawnSums++;
-                    }
             }
         }
 

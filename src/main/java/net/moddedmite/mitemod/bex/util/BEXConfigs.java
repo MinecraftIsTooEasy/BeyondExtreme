@@ -32,6 +32,42 @@ public class BEXConfigs extends EXConfigs {
         }, BEXConfigs::generateConfigFile);
     }
 
+    public static void readConfigFromFile(File file, Properties properties) {
+        for (String key : properties.stringPropertyNames()) {
+            ConfigItem configItem = bexConfigMap.get(key);
+            if (configItem != null) {
+                if (configItem.ConfigValue instanceof Boolean) {
+                    configItem.setConfigValue(Boolean.parseBoolean(properties.getProperty(key)));
+                } else if (configItem.ConfigValue instanceof Float) {
+                    configItem.setConfigValue(Float.parseFloat(properties.getProperty(key)));
+                } else if (configItem.ConfigValue instanceof Double) {
+                    configItem.setConfigValue(Double.parseDouble(properties.getProperty(key)));
+                } else if (configItem.ConfigValue instanceof Integer) {
+                    configItem.setConfigValue(Integer.parseInt(properties.getProperty(key)));
+                } else {
+                    configItem.setConfigValue(properties.getProperty(key));
+                }
+            }
+        }
+    }
+
+    public static void packConfigFile(File file, Properties properties) {
+        try {
+            FileWriter fileWriter = new FileWriter(file, true);
+            for (Map.Entry<String, ConfigItem> entry : bexConfigMap.entrySet()) {
+                ConfigItem value = entry.getValue();
+                String localValue = properties.getProperty(value.ConfigKey);
+                if (localValue == null) {
+                    fileWriter.write("// " + value.ConfigComment + "\n");
+                    fileWriter.write(value.ConfigKey + "=" + value.ConfigValue + "\n\n");
+                }
+            }
+            fileWriter.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
     public static void generateConfigFile(File file) {
         try {
             FileWriter fileWritter = new FileWriter(file);

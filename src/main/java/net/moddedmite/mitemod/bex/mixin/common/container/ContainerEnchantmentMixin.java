@@ -20,38 +20,43 @@ public abstract class ContainerEnchantmentMixin extends Container {
         super(player);
     }
 
-    @Inject(method = "calcEnchantmentLevelsForSlot", at = @At("HEAD"), cancellable = true)
-    private void onCalcEnchantmentLevelsForSlot(Random random, int slot_index, int num_accessible_bookshelves, ItemStack item_stack, CallbackInfoReturnable<Integer> cir) {
-        Item item = item_stack.getItem();
+//    @Inject(method = "calcEnchantmentLevelsForSlot", at = @At("HEAD"), cancellable = true)
+//    private void onCalcEnchantmentLevelsForSlot(Random random, int slot_index, int num_accessible_bookshelves, ItemStack item_stack, CallbackInfoReturnable<Integer> cir) {
+//        Item item = item_stack.getItem();
+//
+//        if (item.getHardestMetalMaterial() == BEXMaterials.enchant) {
+//            int result = this.modifiedCalcEnchantmentLevels(random, slot_index, num_accessible_bookshelves, item_stack);
+//            cir.setReturnValue(result);
+//        }
+//    }
 
-        if (item.getHardestMetalMaterial() == BEXMaterials.enchant) {
-            int result = this.modifiedCalcEnchantmentLevels(random, slot_index, num_accessible_bookshelves, item_stack);
-            cir.setReturnValue(result);
-        }
+    @ModifyConstant(method = "calcEnchantmentLevelsForSlot", constant = @Constant(intValue = 24), allow = 2)
+    private int removeBookshelfCap(int original) {
+        return Integer.MAX_VALUE;
     }
 
-    @Unique
-    private int modifiedCalcEnchantmentLevels(Random random, int slot_index, int num_accessible_bookshelves, ItemStack item_stack) {
-        Item item = item_stack.getItem();
-
-        if (!ItemPotion.isBottleOfWater(item_stack) && !ItemAppleGold.isUnenchantedGoldenApple(item_stack)) {
-            if (item.getItemEnchantability() <= 0) {
-                return 0;
-            } else {
-                Block enchantment_table_block = this.world.getBlock(this.posX, this.posY, this.posZ);
-
-                int enchantment_table_power = (1 + num_accessible_bookshelves) * (enchantment_table_block == Block.enchantmentTableEmerald ? 2 : 4);
-                int enchantment_levels = EnchantmentHelper.getEnchantmentLevelsAlteredByItemEnchantability(enchantment_table_power, item);
-                float fraction = (1.0F + (float) slot_index) / 3.0F;
-
-                if (slot_index < 2) {
-                    fraction += (random.nextFloat() - 0.5F) * 0.2F;
-                }
-
-                return Math.max(Math.round((float) enchantment_levels * fraction), 1);
-            }
-        } else {
-            return 2;
-        }
-    }
+//    @Unique
+//    private int modifiedCalcEnchantmentLevels(Random random, int slot_index, int num_accessible_bookshelves, ItemStack item_stack) {
+//        Item item = item_stack.getItem();
+//
+//        if (!ItemPotion.isBottleOfWater(item_stack) && !ItemAppleGold.isUnenchantedGoldenApple(item_stack)) {
+//            if (item.getItemEnchantability() <= 0) {
+//                return 0;
+//            } else {
+//                Block enchantment_table_block = this.world.getBlock(this.posX, this.posY, this.posZ);
+//
+//                int enchantment_table_power = (1 + num_accessible_bookshelves) * (enchantment_table_block == Block.enchantmentTableEmerald ? 2 : 4);
+//                int enchantment_levels = EnchantmentHelper.getEnchantmentLevelsAlteredByItemEnchantability(enchantment_table_power, item);
+//                float fraction = (1.0F + (float) slot_index) / 3.0F;
+//
+//                if (slot_index < 2) {
+//                    fraction += (random.nextFloat() - 0.5F) * 0.2F;
+//                }
+//
+//                return Math.max(Math.round((float) enchantment_levels * fraction), 1);
+//            }
+//        } else {
+//            return 2;
+//        }
+//    }
 }

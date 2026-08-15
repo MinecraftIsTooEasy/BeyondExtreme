@@ -7,11 +7,11 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
-@Mixin(value = EnchantmentVampiric.class, priority = 3000)
+@Mixin(value = EnchantmentVampiric.class, priority = 100)
 public class EnchantmentVampiricMixin {
     @Inject(method = "canEnchantItem", at = @At(value = "HEAD"), cancellable = true)
     private void enchantMaterialCanEnchant(Item item, CallbackInfoReturnable<Boolean> cir) {
-        if (item instanceof ItemTool) {
+        if (item instanceof ItemSword || item instanceof ItemCudgel) {
             Material material = ((ItemTool) item).getToolMaterial();
             if (material == BEXMaterials.enchant) cir.setReturnValue(true);
         }

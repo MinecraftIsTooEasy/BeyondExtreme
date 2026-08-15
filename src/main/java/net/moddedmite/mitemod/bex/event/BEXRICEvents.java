@@ -68,5 +68,6 @@ public class BEXRICEvents extends Handlers {
                 list.add(volcano);
             }
         });
+        Trading.register(new BEXTrading());
     }
 }

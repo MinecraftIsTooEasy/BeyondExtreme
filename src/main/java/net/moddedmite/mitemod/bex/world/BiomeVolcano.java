@@ -3,7 +3,6 @@ package net.moddedmite.mitemod.bex.world;
 import net.minecraft.BiomeGenBase;
 import net.minecraft.Block;
 import net.minecraft.World;
-import net.minecraft.WorldGenMinable;
 import net.moddedmite.mitemod.bex.register.BEXBlocks;
 
 import java.awt.*;
@@ -66,28 +65,21 @@ public class BiomeVolcano extends BiomeGenBase {
 		}
 		
 		
-		int temp;
-		int x;
-		int y;
-		int z;
-		WorldGenMinable genMinableWaterMoving = new WorldGenMinable(BEXBlocks.volcanoAshes.blockID, 100000, Block.waterMoving.blockID);
-		WorldGenMinable genMinableWater = new WorldGenMinable(BEXBlocks.volcanoAshes.blockID, 100000, Block.waterStill.blockID);
-		WorldGenMinable genMinableSand = new WorldGenMinable(BEXBlocks.volcanoSand.blockID, 100000, Block.sand.blockID);
-		for (temp = 0; temp < 200000; ++temp) {
-			x = par3 + par2Random.nextInt(16);
-			y = par2Random.nextInt(128);
-			z = par4 + par2Random.nextInt(16);
-			genMinableWater.generate(par1World, par2Random, x, 62, z);
-			genMinableWaterMoving.generate(par1World, par2Random, x, y, z);
-			genMinableSand.generate(par1World, par2Random, x, y, z);
-		}
-		
-		WorldGenMinable genMinableBlock = new WorldGenMinable(BEXBlocks.volcanoStone.blockID, 100, Block.stone.blockID);
-		for (temp = 0; temp < 4096; ++temp) {
-			x = par3 + par2Random.nextInt(16);
-			y = par2Random.nextInt(128);
-			z = par4 + par2Random.nextInt(16);
-			genMinableBlock.generate(par1World, par2Random, x, y, z);
+		for (int dx = 0; dx < 16; ++dx) {
+			for (int dz = 0; dz < 16; ++dz) {
+				for (int dy = 0; dy < 128; ++dy) {
+					int x = par3 + dx;
+					int z = par4 + dz;
+					int blockId = par1World.getBlockId(x, dy, z);
+					if (blockId == Block.waterMoving.blockID || blockId == Block.waterStill.blockID) {
+						par1World.setBlock(x, dy, z, BEXBlocks.volcanoAshes.blockID, 0, 2);
+					} else if (blockId == Block.sand.blockID) {
+						par1World.setBlock(x, dy, z, BEXBlocks.volcanoSand.blockID, 0, 2);
+					} else if (blockId == Block.stone.blockID) {
+						par1World.setBlock(x, dy, z, BEXBlocks.volcanoStone.blockID, 0, 2);
+					}
+				}
+			}
 		}
 	}
 }

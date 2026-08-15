@@ -119,7 +119,7 @@ public class BEXItems {
     public static void registerRecipes(CraftingRecipeRegisterEvent register) {
         register.registerShapelessRecipe(new ItemStack(EXItemsRegistryInit.voucherCore, 1), true, EXItemsRegistryInit.voucherAnnihilationSkeleton, EXItemsRegistryInit.voucherDoor, EXItemsRegistryInit.voucherExchanger, EXItemsRegistryInit.voucherPigman, EXItemsRegistryInit.voucherZombieLord, EXItemsRegistryInit.voucherWitch, voucherGhast, voucherZombieMiner, voucherSpiderQueen);
 
-        register.registerShapedRecipe(new ItemStack(clubEnchant, 1), true, new Object[]{"#B#", "#*#"," A ", '#', BEXItems.enchantNugget , '*', BEXItems.enchantIngot, 'A', EXItemsRegistryInit.voucherClubCore, 'B', EXItemsRegistryInit.clubMithril});
+        register.registerShapedRecipe(new ItemStack(clubEnchant, 1), true, new Object[]{"#B#", "#*#"," A ", '#', BEXItems.enchantNugget , '*', BEXItems.enchantIngot, 'A', EXItemsRegistryInit.voucherClubCore, 'B', EXItemsRegistryInit.clubMithril}).extendsNBT().keepQuality();
 
         register.registerShapedRecipe(new ItemStack(itemDynamicCoreInfinity, 1), true, new Object[]{"ABA", "BCB","ABA", 'A', BEXItems.infinityingot, 'B', Block.glass, 'C', EXItemsRegistryInit.itemDynamicCoreVibranium});
 

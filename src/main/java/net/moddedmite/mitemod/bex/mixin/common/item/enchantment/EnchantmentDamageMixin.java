@@ -23,4 +23,9 @@ public abstract class EnchantmentDamageMixin extends Enchantment {
          cir.setReturnValue(true);
       }
    }
+
+//   @Inject(method = "canApplyTogether", at = @At("HEAD"), cancellable = true)
+//   public void vibraniumTogether(Enchantment par1Enchantment, CallbackInfoReturnable<Boolean> cir) {
+//      cir.setReturnValue(true);
+//   }
 }
