@@ -2,18 +2,24 @@ package net.moddedmite.mitemod.bex.mixin.compat.entity;
 
 import cn.wensc.mitemod.extreme.entity.EntityExchanger;
 import net.minecraft.*;
+import net.moddedmite.mitemod.bex.api.IBEXEvasions;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(EntityExchanger.class)
-public class EntityExchangerMixin extends EntitySkeleton {
+public class EntityExchangerMixin extends EntitySkeleton implements IBEXEvasions {
     private int max_num_evasions;
     private int num_evasions;
 
     public EntityExchangerMixin(World par1World) {
         super(par1World);
+    }
+
+    @Override
+    public int bex$getNumEvasions() {
+        return this.num_evasions;
     }
 
     @Inject(method = "<init>", at = @At("TAIL"))

@@ -2,6 +2,7 @@ package net.moddedmite.mitemod.bex.mixin.common.entity;
 
 import net.minecraft.*;
 import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.Overwrite;
 
 @Mixin(EntityOcelot.class)
 public abstract class EntityOcelotMixin extends EntityTameable {
@@ -9,7 +10,7 @@ public abstract class EntityOcelotMixin extends EntityTameable {
         super(par1World);
     }
 
-    @Override
+    @Overwrite
     public boolean onEntityRightClicked(EntityPlayer player, ItemStack item_stack) {
         if (super.onEntityRightClicked(player, item_stack)) {
             return true;

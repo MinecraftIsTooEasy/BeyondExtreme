@@ -2,7 +2,10 @@
 out/
 !**/src/main/**/out/
 !**/src/test/**/out/
-.idea
+.idea/
+*.iml
+*.ipr
+*.iws
 
 ### Eclipse ###
 .apt_generated
@@ -33,3 +36,9 @@ bin/
 run
 /.gradle
 /build
+
+# Java crash and profiling output
+hs_err_*.log
+replay_*.log
+*.hprof
+*.jfr

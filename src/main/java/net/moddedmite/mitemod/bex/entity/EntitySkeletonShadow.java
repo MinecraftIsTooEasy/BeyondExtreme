@@ -14,6 +14,11 @@ public class EntitySkeletonShadow extends EntitySkeleton implements ITELivingEnt
     private int max_num_evasions;
     private int num_evasions;
     private boolean hasClonePlayer = false;
+
+    public int getNumEvasions() {
+        return this.num_evasions;
+    }
+
     @Override public void dropContainedItems() {}
 
     @Override protected void dropEquipment(boolean recently_hit_by_player, int par2) {}
