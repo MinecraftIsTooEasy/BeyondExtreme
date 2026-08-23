@@ -6,6 +6,8 @@
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/BeyondExtreme.test.iml" filepath="$PROJECT_DIR$/.idea/modules/BeyondExtreme.test.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/com.github.MinecraftIsTooEasy.BeyondExtreme.main.iml" filepath="$PROJECT_DIR$/.idea/modules/com.github.MinecraftIsTooEasy.BeyondExtreme.main.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/com.github.MinecraftIsTooEasy.BeyondExtreme.test.iml" filepath="$PROJECT_DIR$/.idea/modules/com.github.MinecraftIsTooEasy.BeyondExtreme.test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/org.moddedmite.BeyondExtreme.main.iml" filepath="$PROJECT_DIR$/.idea/modules/org.moddedmite.BeyondExtreme.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/org.moddedmite.BeyondExtreme.test.iml" filepath="$PROJECT_DIR$/.idea/modules/org.moddedmite.BeyondExtreme.test.iml" />
     </modules>
   </component>
 </project>

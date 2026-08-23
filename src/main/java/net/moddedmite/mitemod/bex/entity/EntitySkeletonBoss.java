@@ -21,6 +21,11 @@ public class EntitySkeletonBoss extends EntitySkeleton implements IBossDisplayDa
     private Enchantment [] enhanceSpecialBookList = new Enchantment[] {Enchantment.protection, Enchantment.sharpness,  Enchantment.fortune, Enchantment.harvesting, MITEITEEnchantmentRegistryInit.EXTEND, Enchantment.efficiency, Enchantment.vampiric, Enchantment.butchering, Enchantment.featherFalling, BEXEnchantments.EnchantmentForge};
     private Enchantment [] nonLevelsBookList = new Enchantment[] {EXEnchantmentRegistryInit.enchantmentFixed, EXEnchantmentRegistryInit.enchantmentChain, MITEITEEnchantmentRegistryInit.EMERGENCY, BEXEnchantments.enchantmentRangeAttack, BEXEnchantments.enchantmentUnassailable};
     private boolean attack_mode = true;
+
+    public int getNumEvasions() {
+        return this.num_evasions;
+    }
+
     public void addRandomWeapon() {
         List items = new ArrayList();
         items.add(new RandomItemListEntry(MITEITEItemRegistryInit.VIBRANIUM_SWORD, 2));

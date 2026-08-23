@@ -23,6 +23,10 @@ public class EntityUltimateAnnihilationSkeleton extends EntitySkeleton implement
     private int despawnCount;
     private int max_num_evasions;
     private int num_evasions;
+
+    public int getNumEvasions() {
+        return this.num_evasions;
+    }
     private boolean haveTryToSpawnExchanger = false;
     private boolean hasClonePlayer = false;
     private int forced_skeleton_type = 2;
