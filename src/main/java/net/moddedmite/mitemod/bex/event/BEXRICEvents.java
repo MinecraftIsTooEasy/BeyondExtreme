@@ -1,7 +1,6 @@
 package net.moddedmite.mitemod.bex.event;
 
 import moddedmite.rustedironcore.api.event.Handlers;
-import moddedmite.rustedironcore.api.event.events.BiomeDecorationRegisterEvent;
 import moddedmite.rustedironcore.api.event.listener.IArrowRegisterListener;
 import moddedmite.rustedironcore.api.event.listener.IBeaconUpdateHandler;
 import moddedmite.rustedironcore.api.event.listener.IBiomeGenerateListener;
@@ -19,9 +18,6 @@ import net.moddedmite.mitemod.bex.register.BEXItems;
 import net.moddedmite.mitemod.bex.register.BEXMaterials;
 import net.moddedmite.mitemod.bex.world.BiomeVolcano;
 import net.xiaoyu233.fml.reload.utils.IdUtil;
-import net.xiaoyu233.mitemod.miteite.block.MITEITEBlockRegistryInit;
-import net.xiaoyu233.mitemod.miteite.events.listener.CraftingRegistry;
-import net.xiaoyu233.mitemod.miteite.item.MITEITEItemRegistryInit;
 import net.xiaoyu233.mitemod.miteite.item.material.Materials;
 
 import java.util.List;
@@ -32,7 +28,7 @@ public class BEXRICEvents extends Handlers {
     public static void register() {
         LootTable.register(new BEXLootTable());
         SpawnCondition.register(new BEXSpawnCondition());
-        Crafting.register(new BEXCraftingRegistry());
+        Crafting.registerPost(new BEXCraftingRegistry());
         Combat.register(new BEXCombatListener());
         Achievement.register(new BEXAchievementListener());
         ArmorModel.register(new BEXArmorModelListener());
@@ -57,7 +53,9 @@ public class BEXRICEvents extends Handlers {
             }
         });
         PropertiesRegistry.register(() -> {
-            ItemProperties.HeatLevelRequired.register(BEXItems.enchantSRC, 2);
+            ItemProperties.HeatLevelRequired.register(BEXItems.enchantSRC, 5);
+            ItemProperties.HeatLevelRequired.register(Item.getItem(BEXBlocks.volcanoDiamondOre), 3);
+            ItemProperties.HeatLevelRequired.register(Item.getItem(BEXBlocks.volcanoMithrilOre), 3);
             MaterialProperties.RepairItem.register(BEXMaterials.infinity, BEXItems.infinityNugget);
             MaterialProperties.RepairItem.register(BEXMaterials.enchant, BEXItems.enchantNugget);
         });
@@ -69,5 +67,10 @@ public class BEXRICEvents extends Handlers {
             }
         });
         Trading.register(new BEXTrading());
+        Smelting.register(event -> {
+            event.register(BEXBlocks.volcanoEmeraldOre, Item.emerald);
+            event.register(BEXBlocks.volcanoDiamondOre, Item.diamond);
+            event.register(BEXBlocks.volcanoMithrilOre, Item.ingotMithril);
+        });
     }
 }

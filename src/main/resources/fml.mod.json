@@ -5,9 +5,9 @@
   "depends": {
     "minecraft": "1.6.4-mite",
     "fishmodloader": ">=3.4.1",
-    "mite_ite": ">=2.0.16",
+    "mite_ite": ">=2.0.30",
     "rusted_iron_core": ">=1.5.0",
-    "extreme": ">=0.1.6.6"
+    "extreme": ">=0.1.6.9"
   },
   "environment": "*",
   "name": "Beyond Extreme",

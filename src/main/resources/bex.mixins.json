@@ -8,7 +8,6 @@
     "common.block.BlockMixin",
     "common.block.BlockMobSpawnerMixin",
     "common.block.BlockOreMixin",
-    "common.block.tileentity.TileEntityFurnaceMixin",
     "common.container.ContainerEnchantmentMixin",
     "common.container.SlotCraftingMixin",
     "common.entity.EntityAncientBoneLordMixin",

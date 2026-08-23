@@ -28,9 +28,9 @@ public class BEXBlocks {
             .setCreativeTab(tabBEX).setHardness(2.0F);
     public static final Block volcanoAshes = ReflectHelper.createInstance(Block.class, new Class[]{int.class, Material.class, BlockConstants.class}, IdUtil.getNextBlockID(), BEXMaterials.sand, new BlockConstants())
             .setCreativeTab(tabBEX).setStepSound(Block.soundSandFootstep);
-    public static final Block volcanoEmeraldOre = new BlockOre(IdUtil.getNextBlockID(), Material.emerald, 3).setHardness(4.0F).setCreativeTab(tabBEX);
+    public static final Block volcanoEmeraldOre = new BlockOre(IdUtil.getNextBlockID(), Material.emerald, 3 ).setHardness(4.0F).setCreativeTab(tabBEX);
     public static final Block volcanoMithrilOre = new BlockOre(IdUtil.getNextBlockID(), Material.mithril, 3).setHardness(4.0F).setCreativeTab(tabBEX);
-    public static final Block volcanoDiamondOre = new BlockOre(IdUtil.getNextBlockID(), Material.diamond, 3).setHardness(4.0F).setCreativeTab(tabBEX);
+    public static final Block volcanoDiamondOre = new BlockOre(IdUtil.getNextBlockID(), Material.diamond, 4).setHardness(4.0F).setCreativeTab(tabBEX);
     public static final BlockDragonSpawn dragonSpawn = new BlockDragonSpawn(IdUtil.getNextBlockID());
 //    public static final Block volcanoGravel = (ReflectHelper.createInstance(BlockVolcanoGravel.class, new Class[] {int.class,Material.class}, IdUtil.getNextBlockID(), BEXMaterials.sand)).setUnlocalizedName("blockVolcanoGravel");
     public static final WorkbenchBlock infinityWorkBench = (WorkbenchBlock) new BlockBEXWorkbench(IdUtil.getNextBlockID(), BEXMaterials.infinity, Float.MAX_VALUE, Materials.vibranium);
@@ -101,8 +101,5 @@ public class BEXBlocks {
         for (int plank_subtype = 0; plank_subtype < 2; ++plank_subtype) {
             register.registerShapedRecipe(new ItemStack(infinityWorkBench), true, new Object[]{"IL", "s#", 'I', ItemIngot.getMatchingItem(ItemIngot.class, infinityWorkBench.getMaterial()), 'L', Item.leather, 's', Item.stick, '#', new ItemStack(EXBlocksRegistryInit.planksEX, 1, plank_subtype)});
         }
-        FurnaceRecipes.smelting().addSmelting(BEXBlocks.volcanoEmeraldOre.blockID, new ItemStack(Item.emerald));
-        FurnaceRecipes.smelting().addSmelting(BEXBlocks.volcanoDiamondOre.blockID, new ItemStack(Item.diamond));
-        FurnaceRecipes.smelting().addSmelting(BEXBlocks.volcanoMithrilOre.blockID, new ItemStack(Item.ingotMithril));
     }
 }

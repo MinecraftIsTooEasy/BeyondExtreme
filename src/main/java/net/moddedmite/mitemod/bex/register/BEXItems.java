@@ -275,7 +275,7 @@ public class BEXItems {
                 " S ",
                 'I', BEXItems.enchantIngot,
                 'S', MITEITEItemRegistryInit.OBSIDIAN_STICK);
-        register.registerShapedRecipe(new ItemStack(arrowVibranium,16),
+        register.registerShapedRecipe(new ItemStack(arrowVibranium, 16),
                 false,
                 "N",
                 "S",
@@ -283,6 +283,17 @@ public class BEXItems {
                 'N', MITEITEItemRegistryInit.VIBRANIUM_NUGGET,
                 'S', MITEITEItemRegistryInit.OBSIDIAN_STICK,
                 'F',Item.feather);
+        register.registerShapedRecipe(new ItemStack(MITEITEItemRegistryInit.VIBRANIUM_BOW),
+                false,
+                "NSL",
+                "AVL",
+                "NSL",
+                'S', MITEITEItemRegistryInit.OBSIDIAN_STICK,
+                'V', MITEITEItemRegistryInit.VIBRANIUM_INGOT,
+                'L', spiderQueenSilk,
+                'N', MITEITEItemRegistryInit.VIBRANIUM_NUGGET,
+                'A', Item.bowAncientMetal).extendsNBT().keepQuality();
+        
 //        register.registerShapedRecipe(new ItemStack(copper_enhance_stone),
 //                true,
 //                " S ",

@@ -20,6 +20,7 @@ base {
 }
 
 repositories {
+    mavenLocal()
     maven {
         name = "ModdedMITE"
         url = uri("https://maven.limingzxc.top/repository/maven-public/")
@@ -39,10 +40,10 @@ dependencies {
 
     implementation "com.github.MinecraftIsTooEasy:ManyLib:2.3.0"
     implementation "com.github.MinecraftIsTooEasy:ModMenu:10.1.1"
-    implementation "com.github.MinecraftIsTooEasy:RustedIronCore:1.5.0"
+    implementation "com.github.MinecraftIsTooEasy:RustedIronCore:1.5.5"
     implementation "com.github.MinecraftIsTooEasy:Conditional-Mixin:0.6.4"
 
-    implementation "com.github.MinecraftIsTooEasy:MITE-ITE:2.0.20"
+    implementation "com.github.MinecraftIsTooEasy:MITE-ITE:2.0.30.1"
     implementation "com.github.MinecraftIsTooEasy:Baubles:1.1.2"
     compileOnly "com.github.MinecraftIsTooEasy:NewShop:1.0.4"
     implementation "com.github.MinecraftIsTooEasy:Shop:1.0.5"

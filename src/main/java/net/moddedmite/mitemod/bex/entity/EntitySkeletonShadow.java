@@ -1,7 +1,7 @@
 package net.moddedmite.mitemod.bex.entity;
 
 import net.minecraft.*;
-import net.moddedmite.mitemod.bex.register.BEXItems;
+import net.xiaoyu233.mitemod.miteite.api.ITELivingEntity;
 import net.xiaoyu233.mitemod.miteite.item.MITEITEItemRegistryInit;
 import net.xiaoyu233.mitemod.miteite.util.Configs;
 
@@ -10,7 +10,7 @@ import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
 
-public class EntitySkeletonShadow extends EntitySkeleton {
+public class EntitySkeletonShadow extends EntitySkeleton implements ITELivingEntity {
     private int max_num_evasions;
     private int num_evasions;
     private boolean hasClonePlayer = false;
@@ -227,5 +227,20 @@ public class EntitySkeletonShadow extends EntitySkeleton {
             }
         }
         return super.attackEntityFrom(damage);
+    }
+    
+    @Override
+    public boolean[] getPickedUpAHeldItemArray() {
+        return new boolean[0];
+    }
+    
+    @Override
+    public boolean canBeDisarmed() {
+        return false;
+    }
+    
+    @Override
+    public float getWeaponDamageBoost() {
+        return 0;
     }
 }
