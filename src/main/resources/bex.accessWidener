@@ -15,3 +15,4 @@ accessible field net/minecraft/BiomeDecorator treesPerChunk I
 accessible field net/minecraft/BiomeDecorator flowersPerChunk I
 accessible field net/minecraft/BiomeDecorator clayPerChunk I
 accessible field net/minecraft/BiomeDecorator bigMushroomsPerChunk I
+accessible field net/minecraft/Material durability F

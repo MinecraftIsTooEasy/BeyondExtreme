@@ -21,6 +21,11 @@ public class EntityExchangerMixin extends EntitySkeleton implements IBEXEvasions
     public int bex$getNumEvasions() {
         return this.num_evasions;
     }
+    
+    @Override
+    public void bex$setNumEvasions(int evasions) {
+        this.num_evasions = evasions;
+    }
 
     @Inject(method = "<init>", at = @At("TAIL"))
     private void avoidPlayer(World par1World, CallbackInfo ci) {
@@ -145,6 +150,8 @@ public class EntityExchangerMixin extends EntitySkeleton implements IBEXEvasions
     }
 
     public EntityDamageResult attackEntityFrom(Damage damage) {
+        disableEvasionFromPhaseCounter(damage);
+        if (this.num_evasions <= 0) return super.attackEntityFrom(damage);
         ItemStack item_stack;
         DamageSource damage_source = damage.getSource();
         boolean has_phasedefend = false;

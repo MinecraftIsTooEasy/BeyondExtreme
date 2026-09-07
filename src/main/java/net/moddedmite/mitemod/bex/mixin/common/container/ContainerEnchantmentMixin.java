@@ -1,7 +1,9 @@
 package net.moddedmite.mitemod.bex.mixin.common.container;
 
+import com.llamalad7.mixinextras.sugar.Local;
 import net.minecraft.*;
 import net.moddedmite.mitemod.bex.register.BEXMaterials;
+import net.xiaoyu233.mitemod.miteite.item.material.Materials;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.Unique;
@@ -31,8 +33,11 @@ public abstract class ContainerEnchantmentMixin extends Container {
 //    }
 
     @ModifyConstant(method = "calcEnchantmentLevelsForSlot", constant = @Constant(intValue = 24), allow = 2)
-    private int removeBookshelfCap(int original) {
-        return Integer.MAX_VALUE;
+    private int removeBookshelfCap(int original, @Local(name = "item_stack") ItemStack item_stack) {
+        if (item_stack.getItem().getHardestMetalMaterial().durability >= Materials.vibranium.durability / 2) {
+            return Integer.MAX_VALUE;
+        }
+        return original;
     }
 
 //    @Unique
