@@ -12,10 +12,12 @@ import net.minecraft.Item;
 import net.minecraft.ItemStack;
 import net.minecraft.Material;
 import net.minecraft.TileEntityBeacon;
+import net.moddedmite.mitemod.bex.BEXInit;
 import net.moddedmite.mitemod.bex.event.listener.*;
 import net.moddedmite.mitemod.bex.register.BEXBlocks;
 import net.moddedmite.mitemod.bex.register.BEXItems;
 import net.moddedmite.mitemod.bex.register.BEXMaterials;
+import net.moddedmite.mitemod.bex.world.BEXBiomes;
 import net.moddedmite.mitemod.bex.world.BiomeVolcano;
 import net.xiaoyu233.fml.reload.utils.IdUtil;
 import net.xiaoyu233.mitemod.miteite.item.material.Materials;
@@ -62,8 +64,7 @@ public class BEXRICEvents extends Handlers {
         BiomeGenerate.register(new IBiomeGenerateListener() {
             @Override
             public void onInitialBiomesModify(List<BiomeGenBase> list) {
-                BiomeVolcano volcano = new BiomeVolcano(IdUtil.getNextBiomeId());
-                list.add(volcano);
+                list.add(BEXBiomes.volcano);
             }
         });
         Trading.register(new BEXTrading());

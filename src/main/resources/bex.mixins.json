@@ -36,6 +36,7 @@
     "common.world.BiomeBaseMixin",
     "common.world.BiomeGenHellMixin",
     "common.world.BiomeGenUnderworldMixin",
+    "common.world.WorldChunkManagerMixin",
     "compat.container.ForgingTableSlotsMixin",
     "compat.entity.EntityAncientDragonMixin",
     "compat.entity.EntityExchangerMixin",

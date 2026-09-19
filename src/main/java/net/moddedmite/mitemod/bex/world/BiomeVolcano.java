@@ -13,7 +13,7 @@ public class BiomeVolcano extends BiomeGenBase {
 	public BiomeVolcano(int par1) {
 		super(par1);
 		this.minHeight = 0.7F;
-		this.maxHeight = 3.0F;
+		this.maxHeight = 2.0F;
 		this.spawnableCreatureList.clear();
 		this.spawnableWaterCreatureList.clear();
 		this.topBlock = (byte)Block.sand.blockID;
@@ -27,6 +27,7 @@ public class BiomeVolcano extends BiomeGenBase {
 		this.theBiomeDecorator.bigMushroomsPerChunk = -999;
 		this.canSpawnLightningBolt(true);
 		this.setColor(new Color(202, 36, 26).getRGB());
+		this.setBiomeName("Volcano");
 	}
 	
 	@Override
